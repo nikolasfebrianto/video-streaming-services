@@ -17,7 +17,8 @@ class User:
     
 
     def check_benefit(self):
-        benefit= {
+        title= 'PacFlix Plan List'
+        data= {
             'Basic Plan': [True, True, True, 
                            False, False, 1,
                            '3rd party Movie only',
@@ -35,9 +36,10 @@ class User:
                            '3rd party Movie only',
                            'Jenis Konten', 'Harga']
         }
-        
-        return tabulate(benefit,headers="keys")
+        tabel= tabulate(data, headers= "keys")
+        return title+'\n\n'+tabel
     
+
     def check_plan(self):
         pass
 
