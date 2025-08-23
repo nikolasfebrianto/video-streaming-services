@@ -16,9 +16,9 @@ class User:
         self.duration_plan = duration_plan
     
 
-    def check_benefit(self):
+    def check_all_plan(self):
         title= 'PacFlix Plan List'
-        data= {
+        all_plan= {
             'Basic Plan': [True, True, True, 
                            False, False, 1,
                            '3rd party Movie only',
@@ -36,7 +36,9 @@ class User:
                            '3rd party Movie only',
                            'Jenis Konten', 'Harga']
         }
-        tabel= tabulate(data, headers= "keys")
+
+        tabel= tabulate(all_plan, headers= "keys")
+        
         return title+'\n\n'+tabel
     
 
@@ -53,5 +55,5 @@ class User:
 
 
 user_1= User("Shandy", 12, "Basic Plan")
-print(user_1.check_benefit())
+print(user_1.check_all_plan())
 
