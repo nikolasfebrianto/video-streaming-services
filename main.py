@@ -10,9 +10,9 @@ data = {
 
 class User:
     def __init__(self, username, duration_plan, 
-                 current_plant):
+                 current_plan):
         self.username = username
-        self.current_plant = current_plant
+        self.current_plan = current_plan
         self.duration_plan = duration_plan
         self.all_plan= {
             'Basic Plan': [True, True, True, 
@@ -34,16 +34,25 @@ class User:
         }
     
 
-    def check_all_plan(self):
-        title= 'PacFlix Plan List'
+    def convert_to_tabulate(self, data):
+        return tabulate(data, headers= "keys")
 
-        tabel= tabulate(self.all_plan, headers= "keys")
-        
-        return title+'\n\n'+tabel
+
+    def check_all_plan(self):
+        return 'PacFlix Plan List\n\n'+self.convert_to_tabulate(self.all_plan)
     
 
     def check_plan(self):
-        pass
+        plan_benefit= {}
+        
+        for plan in self.all_plan:
+            if plan==self.current_plan or plan=="Services":
+                plan_benefit.update({plan:self.all_plan.get(plan)})
+        
+        return self.current_plan+'\n\n'+str(self.duration_plan)+' Bulan\n\n'\
+                +self.current_plan+' PacFlix Benefit List\n\n'\
+                +self.convert_to_tabulate(plan_benefit) 
+
 
     
     def upgrade_plan(self):
@@ -54,6 +63,6 @@ class User:
         pass
 
 user_1= User("Tono", 12, "Basic Plan")
-print(user_1.check_benefit())
+print(user_1.check_plan())
 
 
