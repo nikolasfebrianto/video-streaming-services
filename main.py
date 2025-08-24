@@ -54,7 +54,6 @@ class User:
                 +self.convert_to_tabulate(plan_benefit) 
 
 
-    
     def upgrade_plan(self):
         pass
 
