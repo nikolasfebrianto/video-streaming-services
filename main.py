@@ -9,15 +9,12 @@ data = {
 }
 
 class User:
-    def __init__(self, username, current_plant, 
-                 duration_plan):
+    def __init__(self, username, duration_plan, 
+                 current_plant):
         self.username = username
         self.current_plant = current_plant
         self.duration_plan = duration_plan
-    
-
-    def check_benefit(self):
-        benefit= {
+        self.all_plan= {
             'Basic Plan': [True, True, True, 
                            False, False, 1,
                            '3rd party Movie only',
@@ -35,9 +32,16 @@ class User:
                            '3rd party Movie only',
                            'Jenis Konten', 'Harga']
         }
-        
-        return tabulate(benefit,headers="keys")
     
+
+    def check_all_plan(self):
+        title= 'PacFlix Plan List'
+
+        tabel= tabulate(self.all_plan, headers= "keys")
+        
+        return title+'\n\n'+tabel
+    
+
     def check_plan(self):
         pass
 
@@ -49,7 +53,7 @@ class User:
     def pick_plan(self):
         pass
 
-
 user_1= User("Tono", 12, "Basic Plan")
 print(user_1.check_benefit())
+
 
