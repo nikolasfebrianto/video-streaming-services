@@ -1,5 +1,5 @@
 from tabulate import tabulate
-# tinggal di run saja
+
 data = {
     "Shandy": ["Basic Plan", 12, "shandy-2134"],
     "Cahya": ["Standard Plan", 24, "cahya-abcd"],
@@ -115,3 +115,36 @@ class User:
                 elif new_plan == "Premium Plan":
                     total = 200_000
                     return total
+                
+
+class NewUser:
+    
+    check_list = []
+    
+    def __init__(self, username):
+        self.username = username
+    
+    # method to dictionary to list to easier use
+    def convert_data_to_list(self, data):
+        for data in data.values():
+            for val in data:
+                self.check_list.append(val)
+                
+        return self.check_list
+        
+    # method to pick plan 
+    def pick_plan(self, new_plan, referral_code):
+        if referral_code in self.check_list:
+            if new_plan == "Basic Plan":
+                total = 120_000 - (120_000 * 0.04)
+                return total
+            elif new_plan == "Standard Plan":
+                total = 160_000 - (160_000 * 0.04)
+                return total
+            elif new_plan == "Premium Plan":
+                total = 200_000 - (200_000 * 0.04)
+                return total
+            else:
+                print("Plan doesn't exist")
+        else:
+            raise Exception("Referral Code doesn't exist")
